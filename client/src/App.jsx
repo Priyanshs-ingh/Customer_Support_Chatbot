@@ -33,13 +33,17 @@ function App() {
                 body: JSON.stringify({ message: userMessage }),
             });
 
-            if (!response.ok) {
-                const errorData = await response.text();
-                console.error('Server error:', errorData);
-                throw new Error(`Server error: ${errorData}`);
-              }
-
             const data = await response.json();
+            console.log('Server response:', data); // Log the full response
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to save chat message');
+            }
+
+            if (!data.success) {
+                throw new Error(data.message || 'Database operation failed');
+            }
+
             setMessages(prev => [...prev, { 
                 text: data.response,
                 category: data.category,
@@ -49,7 +53,7 @@ function App() {
         } catch (error) {
             console.error('Error:', error);
             setMessages(prev => [...prev, { 
-                text: 'Sorry, I encountered an error. Please try again.', 
+                text: `Error: ${error.message}. Please try again.`, 
                 isUser: false 
             }]);
         }
