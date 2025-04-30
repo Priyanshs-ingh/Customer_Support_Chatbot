@@ -1,0 +1,27 @@
+/* Add your Signup component styles here */
+
+/* Example styles */
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.signup-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #0056b3;
+}
