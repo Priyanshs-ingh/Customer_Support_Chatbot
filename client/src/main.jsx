@@ -12,11 +12,11 @@ import App from "./App";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+const isLoggedIn = () => {
+  return localStorage.getItem("isLoggedIn") === "true";
+};
+
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Navigate to="/login" replace />,
-  },
   {
     path: "/login",
     element: <Login />,
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/app",
-    element: <App />,
+    element: isLoggedIn() ? <App /> : <Navigate to="/login" replace />,
   },
 ]);
 

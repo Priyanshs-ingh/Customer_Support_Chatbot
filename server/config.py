@@ -12,5 +12,7 @@ if not GROQ_API_KEY:
 # Server Configuration
 ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Default Vite dev server
+    "http://localhost:5174",  # Alternative Vite port
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
 ]
